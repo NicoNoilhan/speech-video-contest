@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speech Video Contest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ink: #14121f;
+    --paper: #fdfbf6;
+    --paper-alt: #f4f0e6;
+    --accent: #ff5a36;
+    --accent-ink: #ffffff;
+    --line: #e4ded0;
+    --muted: #6b6558;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #f2ede0;
+      --paper: #17151f;
+      --paper-alt: #1f1c29;
+      --line: #332f40;
+      --muted: #a39d8c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #f2ede0;
+    --paper: #17151f;
+    --paper-alt: #1f1c29;
+    --line: #332f40;
+    --muted: #a39d8c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .display { font-family: 'Space Grotesk', 'Inter', sans-serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+  header.hero {
+    padding: 64px 0 48px;
+    border-bottom: 3px solid var(--ink);
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+  h1.display {
+    font-size: clamp(36px, 7vw, 64px);
+    line-height: 1.02;
+    margin: 0 0 18px;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  .sub {
+    font-size: 18px;
+    color: var(--muted);
+    max-width: 46ch;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .theme-card {
+    margin: 40px 0;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 4px;
+    padding: 32px;
+  }
+  .theme-card .eyebrow { color: #ffb199; }
+  .theme-card h2 {
+    font-size: clamp(26px, 5vw, 38px);
+    margin: 0 0 12px;
+    font-weight: 700;
+  }
+  .theme-card p { margin: 0; color: #d8d3c6; line-height: 1.55; font-size: 15px; }
+
+  section { padding: 44px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  h3.section-title {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 0 0 22px;
+  }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+  .steps li { display: flex; gap: 16px; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 14px;
+  }
+  .steps p { margin: 4px 0 0; line-height: 1.5; font-size: 15.5px; }
+  .steps strong { display: block; font-size: 16px; margin-bottom: 2px; }
+
+  .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 560px) { .date-grid { grid-template-columns: 1fr; } }
+  .date-box {
+    background: var(--paper-alt);
+    border-radius: 4px;
+    padding: 20px;
+  }
+  .date-box .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .date-box .value { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; }
+  .date-note { font-size: 12.5px; color: var(--muted); margin-top: 14px; font-style: italic; }
+
+  .criteria { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    border: 1.5px solid var(--ink);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 16px 28px;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+  .cta:hover { opacity: 0.92; }
+  .fine { font-size: 13px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+
+  footer { padding: 40px 0 60px; }
+  footer p { font-size: 13.5px; color: var(--muted); margin: 4px 0; }
+  footer a { color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <span class="eyebrow">Concours vidéo &middot; Ouvert à tous les lycéens de France</span>
+    <h1 class="display">Speech Video Contest</h1>
+    <p class="sub">Tu as 5 minutes et une caméra. Convaincs-nous, fais-nous rire, surprends-nous &mdash; en anglais.</p>
+  </header>
+
+  <div class="theme-card">
+    <span class="eyebrow">Le thème 2026-2027</span>
+    <h2>&laquo; AI Ruined / Saved My Life &raquo;</h2>
+    <p>Raconte une histoire (vraie ou inventée) sur le jour où l'IA a complètement g&acirc;ché &mdash; ou sauvé &mdash; ta journée. Dr&ocirc;le, personnelle, dramatique : à toi de choisir le ton. Aucune dissertation &laquo; l'IA est-elle bonne ou mauvaise ? &raquo; ne sera acceptée.</p>
+  </div>
+
+  <section>
+    <h3 class="section-title">Comment participer</h3>
+    <ul class="steps">
+      <li>
+        <span class="step-num">1</span>
+        <div>
+          <strong>Prépare ton speech</strong>
+          <p>5 minutes maximum, en anglais, sur le thème imposé.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">2</span>
+        <div>
+          <strong>Filme-toi</strong>
+          <p>Une seule prise ou plusieurs, peu importe &mdash; mais soigne la qualité du son.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">3</span>
+        <div>
+          <strong>Mets ta vidéo en ligne</strong>
+          <p>YouTube (non répertorié) ou lien de partage Drive/Nuage &mdash; pas d'envoi de fichier volumineux par email.</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">4</span>
+        <div>
+          <strong>Inscris-toi</strong>
+          <p>Remplis le formulaire ci-dessous avec le lien de ta vidéo, tes informations et celles de ton lycée.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h3 class="section-title">Dates clés</h3>
+    <div class="date-grid">
+      <div class="date-box">
+        <div class="label">Inscriptions &amp; dépôt vidéo</div>
+        <div class="value">Jusqu'au 15 mars 2027</div>
+      </div>
+      <div class="date-box">
+        <div class="label">Résultats</div>
+        <div class="value">Avril 2027</div>
+      </div>
+    </div>
+    <p class="date-note">Dates provisoires &mdash; à confirmer.</p>
+  </section>
+
+  <section>
+    <h3 class="section-title">Critères d'évaluation</h3>
+    <div class="criteria">
+      <span class="chip">Contenu &amp; originalité</span>
+      <span class="chip">Structure</span>
+      <span class="chip">Qualité de l'anglais</span>
+      <span class="chip">Prononciation</span>
+      <span class="chip">Fluidité</span>
+      <span class="chip">Voix &amp; présence</span>
+      <span class="chip">Impact</span>
+    </div>
+  </section>
+
+  <section>
+    <h3 class="section-title">Inscription</h3>
+    <a class="cta" href="#" id="form-link">
+      Remplir le formulaire d'inscription &rarr;
+    </a>
+    <p class="fine">Le formulaire (nom, classe, professeur référent, lycée, lien vidéo, autorisation droit à l'image) est hébergé sur un service RGPD de l'Éducation nationale.</p>
+  </section>
+
+  <footer>
+    <p><strong>Une question, un souci technique ?</strong></p>
+    <p>Contacte : <a href="mailto:nicolas.noilhan@ac-aix-marseille.fr">nicolas.noilhan@ac-aix-marseille.fr</a></p>
+    <p>Concours ouvert à tous les lycéens de France.</p>
+  </footer>
+
+</div>
+</body>
+</html>
